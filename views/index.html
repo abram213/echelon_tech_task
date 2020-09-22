@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Web server</title>
+</head>
+<body>
+{{ if .LogIn }}
+    <p>You are sign in: email: <b>{{ .User.Email }}</b>, role: <b>{{ .User.Role }}</b></p>
+    <a href="http://localhost:{{ $.Port }}/auth/logout">logout</a>
+    <h3>Routes:</h3>
+    <ul>
+        {{range .Items}}
+            <li><a href="http://localhost:{{ $.Port }}{{ .Href }}">{{ .Name }}</a></li>
+        {{end}}
+    </ul>
+{{ else }}
+    <p>Please
+        <a href="http://localhost:{{ .Port }}/auth/login">login</a>
+        or
+        <a href="http://localhost:{{ .Port }}/auth/register">register</a>
+    </p>
+{{ end }}
+</body>
+</html>
